@@ -1,5 +1,6 @@
 import WebSocket from "ws"
 import { createClient } from "redis";
+import {ALL_ASSETS} from "@repo/assets";
 
 const publisher = createClient({
     url: "redis://localhost:6379"
@@ -20,8 +21,6 @@ interface assetPriceInterface{
         timeStamp: number
     }
 }
-
-const ALL_ASSETS = ["bookTicker.BTC_USDC", "bookTicker.SOL_USDC", "bookTicker.ETH_USDC"];
 
 const currPrices: assetPriceInterface = {
     ...Object.fromEntries(ALL_ASSETS.map((asset) => {
